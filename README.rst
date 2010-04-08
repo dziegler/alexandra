@@ -8,7 +8,7 @@ Installation
 
 Requires Django and `pycassa 0.20`_ or greater::
 
-    pip install -e git+git@github.com:dziegler/alexandra.git#egg=alexandra  
+    pip install -e git+http://github.com/dziegler/alexandra.git#egg=alexandra  
 
 .. _`pycassa 0.20`: http://github.com/vomjom/pycassa
 
