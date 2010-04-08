@@ -9,6 +9,11 @@ Installation
 Requires Django and `pycassa 0.20`_ or greater::
 
     pip install -e git+http://github.com/dziegler/alexandra.git#egg=alexandra  
+    
+add CASSANDRA_CLUSTER and CASSANDRA_KEYSPACE to ``settings.py`` ::
+    
+    CASSANDRA_CLUSTER = ['localhost:9160']
+    CASSANDRA_KEYSPACE = 'my_keyspace'
 
 .. _`pycassa 0.20`: http://github.com/vomjom/pycassa
 
@@ -40,7 +45,15 @@ Syntax for model definition is similar to Django's, but because rows can have as
         objects = EventManager()
     
         class Meta:
+            # defaults to pycassa.ConsistencyLevel.ONE
+            read_consistency_level = pycassa.ConsistencyLevel.ONE 
+            # defaults to pycassa.ConsistencyLevel.ONE
             write_consistency_level = pycassa.ConsistencyLevel.QUORUM
+            # defaults to settings.CASSANDRA_KEYSPACE
+            keyspace = 'another_keyspace' 
+            # defaults to False. Set to True if this is a super column family
+            super_cf = False 
+            
     
         def save(self, *args, **kwargs):
             super(Event, self).save(*args, **kwargs)
