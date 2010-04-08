@@ -1,7 +1,7 @@
 alexandra
 =========
 
-alexandra is a thin abstraction over pycassa to interact with Cassandra from Django.
+alexandra is a thin abstraction over pycassa to interact with Cassandra from Django. 
 
 Installation
 ************
@@ -15,7 +15,7 @@ Requires Django and `pycassa 0.20`_ or greater::
 
 Sample Usage
 ************
-Syntax for model definition is similar to Django's, but because rows can have as many columns as you want, there's no need to define them.::
+Syntax for model definition is similar to Django's, but because rows can have as many columns as you want, there's no need to define them. ::
 
     import pycassa
     from alexandra import cass
@@ -47,7 +47,7 @@ Syntax for model definition is similar to Django's, but because rows can have as
             TrackingUUID.objects.add_event(self['uuid'], self.pk)
         
 
-Queries use the pycassa query api, along with whatever other methods you want to define in your manager::
+Queries use the pycassa query api, along with whatever other methods you want to define in your manager. ::
         
         import uuid
         
