@@ -48,7 +48,16 @@ Syntax for model definition is similar to Django's, but because rows can have as
         
 
 Queries use the pycassa query api, along with whatever other methods you want to define in your manager::
-
-        Event.objects.multiget([1, 2])
-        Event.objects.get_for_uuid(['asdf93'])
         
+        import uuid
+        
+        event = Event()
+        event['uuid'] = "804e39e29a6148039633e5a69f0c0870"
+        event['action'] = 'landing: home'
+        event['gender'] = "1"
+        event.pk = uuid.uuid4().hex
+        event.save()
+        
+        # or you could do this
+        event = Event(uuid="804e39e29a6148039633e5a69f0c0870", action='landing: home', gender='1')
+        Event.objects.insert(uuid.uuid4().hex, event)
